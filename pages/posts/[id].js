@@ -1,7 +1,7 @@
 // Import Layout component for consistent page structure
 import Layout from '../../components/layout';
 // Import functions to get post IDs and individual post data
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getAllPostIds, getPostData } from '../../lib/posts-json';
 // Import Head component for page metadata
 import Head from 'next/head';
 // Import Date component for formatting dates
@@ -36,6 +36,7 @@ export async function getStaticPaths() {
 
 // Individual blog post page component
 export default function Post({ postData }) {
+  console.log(postData.contentHtml);
   return (
     // Use Layout component (without 'home' prop for different styling)
     <Layout>
@@ -48,6 +49,8 @@ export default function Post({ postData }) {
           <Date dateString={postData.date} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <br />
+        <small>tags: {postData.tags}</small>
       </article>
     </Layout>
   );

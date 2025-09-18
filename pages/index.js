@@ -7,7 +7,7 @@ import Link from 'next/link';
 // Import utility CSS styles
 import utilStyles from '../styles/utils.module.css';
 // Import function to get all blog post data
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsData } from '../lib/posts-json';
 // Import Date component for formatting dates
 import Date from '../components/date';
  
@@ -38,7 +38,7 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ id, date, title, tags }) => (
               <li className={utilStyles.listItem} key={id}>
                 <Link href={`/posts/${id}`}>{title}</Link>
                 <br />
