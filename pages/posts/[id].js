@@ -36,6 +36,7 @@ export async function getStaticPaths() {
 
 // Individual blog post page component
 export default function Post({ postData }) {
+  // Debug log to check the HTML content (can be removed in production)
   console.log(postData.contentHtml);
   return (
     // Use Layout component (without 'home' prop for different styling)
